@@ -1,0 +1,47 @@
+# Virtual Environment
+venv/
+env/
+.venv/
+.env/
+.env
+.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Legiscan
+legiscan/
+2025-2026/
+2025-2026.zip
+2023-2024/
+2023-2024.zip
+2021-2022/
+2021-2022.zip
+legiscan-joined-by-state-session/
+legiscan-joined-all/
+bill-text.zip
+bill-text/
+
+helpful_queries.txt
+
+**/.tmp_dagster_home_*/

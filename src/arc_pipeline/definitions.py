@@ -25,7 +25,7 @@ arc_job = define_asset_job(name="arc_weekly_job", selection=arc_assets)
 
 arc_weekly_schedule = ScheduleDefinition(
     job=arc_job,
-    cron_schedule="0 9 * * 1",
+    cron_schedule="0 9 * * 2",
     execution_timezone="UTC",
     run_config={
         "ops": {

@@ -1,6 +1,7 @@
-# Arc Dagster Pipeline
+# Arc Batch Inference Pipeline
 
-Standalone Dagster+ Serverless orchestration for Arc LegiScan ingestion.
+Standalone Dagster pipeline for batch inference and knowledge graph dataset maintenance.
+It ingests legislative data from LegiScan, could eventually run Arc's custom classification models, and update the dataset used by our knowledge graph.
 
 ## Local setup
 

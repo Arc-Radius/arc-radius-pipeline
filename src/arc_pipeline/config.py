@@ -7,7 +7,7 @@ from pydantic import Field, model_validator
 
 
 class ArcRunConfig(Config):
-    pipeline_name: str = "legiscan-arc"
+    pipeline_name: str = "arc-radius-inference"
     force_refresh: bool = False
     max_api_calls_per_run: int = 0
     artifact_bucket: str = Field(default_factory=lambda: os.getenv("PIPELINE_ARTIFACT_BUCKET", ""))

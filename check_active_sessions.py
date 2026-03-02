@@ -6,7 +6,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from arc_pipeline.core.transform import active_sessions, extract_sessions
+from arc_pipeline.core.transform import active_sessions, as_int, extract_sessions
 from arc_pipeline.resources.legiscan_resource import LegiScanClient
 
 PREVIEW_LIMIT = 25
@@ -18,12 +18,27 @@ def main() -> None:
 
     client = LegiScanClient()
     payload = client.get_session_list()
+    dataset_list_payload = client.get_dataset_list()
 
     sessions = extract_sessions(payload)
     active = active_sessions(sessions)
+    active_ids = {
+        as_int(session.get("session_id"))
+        for session in active
+        if as_int(session.get("session_id")) > 0
+    }
+
+    downloadable_ids = {
+        as_int(row.get("session_id"))
+        for row in dataset_list_payload.get("datasetlist", [])
+        if isinstance(row, dict) and str(row.get("access_key", "")).strip() and as_int(row.get("session_id")) > 0
+    }
+    n = len(active_ids & downloadable_ids)
 
     print(f"total_sessions={len(sessions)}")
     print(f"active_sessions={len(active)}")
+    print(f"N={n}")
+    print(f"projected_api_calls_first_run={2 + n}")
 
     state_counts = Counter(
         str(session.get("state", "")).upper()

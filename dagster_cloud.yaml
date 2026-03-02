@@ -1,0 +1,4 @@
+locations:
+- code_source:
+    module_name: arc_pipeline.definitions
+  location_name: arc_pipeline_definitions

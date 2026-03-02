@@ -20,7 +20,7 @@ class LegiScanClient:
         api_key: str | None = None,
         base_url: str | None = None,
         timeout_seconds: int = 30,
-        max_retries: int = 4,
+        max_retries: int = 1,
     ) -> None:
         self.api_key = api_key or os.environ["LEGISCAN_API_KEY"]
         self.base_url = base_url or os.environ.get("LEGISCAN_BASE_URL", "https://api.legiscan.com/")
@@ -139,7 +139,7 @@ class LegiScanResource(ConfigurableResource):
     api_key: str | None = None
     base_url: str | None = None
     timeout_seconds: int = 30
-    max_retries: int = 4
+    max_retries: int = 1
 
     def client(self) -> LegiScanClient:
         return LegiScanClient(

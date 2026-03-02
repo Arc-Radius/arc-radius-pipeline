@@ -38,7 +38,7 @@ def arc_run_params(context: AssetExecutionContext, config: ArcRunConfig) -> dict
     }
 
 
-@asset(retry_policy=RetryPolicy(max_retries=3, delay=2))
+@asset(retry_policy=RetryPolicy(max_retries=1, delay=2))
 def fetch_sessions_and_dataset_list(
     context: AssetExecutionContext,
     arc_run_params: dict[str, Any],
@@ -98,7 +98,7 @@ def fetch_sessions_and_dataset_list(
     }
 
 
-@asset(retry_policy=RetryPolicy(max_retries=3, delay=2))
+@asset(retry_policy=RetryPolicy(max_retries=1, delay=2))
 def detect_changed_sessions(
     context: AssetExecutionContext,
     aws: AwsClientsResource,
@@ -149,7 +149,7 @@ def detect_changed_sessions(
     }
 
 
-@asset(retry_policy=RetryPolicy(max_retries=3, delay=2))
+@asset(retry_policy=RetryPolicy(max_retries=1, delay=2))
 def fetch_changed_datasets(
     context: AssetExecutionContext,
     legiscan: LegiScanResource,
@@ -208,7 +208,7 @@ def fetch_changed_datasets(
     return {"downloaded_sessions": downloaded_sessions}
 
 
-@asset(retry_policy=RetryPolicy(max_retries=3, delay=2))
+@asset(retry_policy=RetryPolicy(max_retries=1, delay=2))
 def update_session_state(
     context: AssetExecutionContext,
     aws: AwsClientsResource,
